@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import { Component } from 'react';
+import axios from 'axios';
+import Navbar from './components/layout/Navbar';
+import Composers from './components/composers/Composers';
+import ContainerBase from './components/styled/ContainerBase';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    composers: [],
+    loading: false,
+  };
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_BASE_URI}/composer/list/pop.json`
+    );
+    this.setState({ composers: res.data.composers, loading: false });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Navbar title="Classical Composer Finder" icon="fas fa-guitar" />
+        <ContainerBase width="85%">
+          <Composers loading={this.state.loading} composers={this.state.composers} />
+        </ContainerBase>
+      </div>
+    );
+  }
 }
 
 export default App;

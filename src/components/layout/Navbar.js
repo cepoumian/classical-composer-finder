@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import NavbarBase from '../styled/NavbarBase';
+import { NavbarBase } from '../styled/Navbars';
 
 const MainNavbar = styled(NavbarBase)`
   background-color: var(--primary-color);
@@ -29,6 +30,14 @@ class Navbar extends Component {
           <i className={this.props.icon}></i>
           {this.props.title}
         </h1>
+        <ul style={{ display: 'flex', gap: 10 }}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
       </MainNavbar>
     );
   }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ButtonBase = styled.div`
+export const BaseButton = styled.button`
   display: inline-block;
   background: var(--light-color);
   color: #333;
@@ -13,4 +13,12 @@ const ButtonBase = styled.div`
   outline: none;
 `;
 
-export default ButtonBase;
+export const DarkButton = styled(BaseButton)`
+  background: var(--dark-color);
+  color: #fff;
+`;
+
+export const LightButton = styled(BaseButton)`
+  background: var(--light-color);
+  color: #333;
+`;

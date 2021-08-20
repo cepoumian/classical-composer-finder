@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import CardBase from '../styled/CardBase';
-import ButtonBase from '../styled/ButtonBase';
+import { BaseCard } from '../styled/Cards';
+import { DarkButton } from '../styled/Buttons';
 
-const ComposerCard = styled(CardBase)`
+const ComposerCard = styled(BaseCard)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const ComposerDetailsButton = styled(ButtonBase)`
+const ComposerDetailsButton = styled(DarkButton)`
   font-size: 0.8rem;
   padding: 0.3rem 1rem;
   margin: 1rem 0;
-  background: var(--dark-color);
-  color: #fff;
 `;
 
 class ComposerItem extends Component {
